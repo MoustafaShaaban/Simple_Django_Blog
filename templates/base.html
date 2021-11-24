@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Blog{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    {% comment %} Start Navbar{% endcomment %}
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary border border-rounded">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'post-list' %}">My Blog</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <form class="d-flex" action="{% url 'search_results' %}" method="get">
+                            <input name="q" class="form-control me-2" type="text" placeholder="Search...." aria-label="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    {% comment %} End Navbar{% endcomment %}
+
+    {% block content %}{% endblock content %}
+    
+    {% comment %}Start Footer{% endcomment %}
+    <div class="container">
+        <footer class="blog-footer bg-primary text-center text-white">
+            <p>Blog template built for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a> by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </footer> 
+    </div>       
+    {% comment %}End Footer{% endcomment %}
+    
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

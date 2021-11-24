@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% for post in posts %}
+    <div class="container mt-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h2 class="card-title"><a href="{% url 'post-detail' post.slug %}">{{ post.title|safe }}</a></h2>
+                <p class="card-text">
+                    <small class="text-muted">
+                        By: {{ post.author|safe }} <span>In {{ post.posted_on }}</span>
+                    </small>
+                </p>
+                <p class="card-text">{{ post.content|slice:':200'|safe }}</p>
+                <a href="{% url 'post-detail' post.slug %}">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

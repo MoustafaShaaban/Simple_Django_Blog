@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+
+{% block content %}
+    {% for post in posts %}
+        <div class="container mt-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title"><a href="{% url 'post-detail' post.slug %}">{{ post.title|safe }}</a></h2>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            By: {{ post.author|safe }} <span>In {{ post.posted_on }}</span>
+                        </small>
+                    </p>
+                    <p class="card-text">{{ post.content|slice:':200'|safe }}</p>
+                    <a href="{% url 'post-detail' post.slug %}">Read More</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% comment %}Start Pagination{% endcomment %}
+    <div class="container">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+                    </li>
+                {% endif %}
+                
+                <li class="page-item">
+                    <a href="{{ page_obj.page_number }}" class="page-link">{{ page_obj.number }}</a>
+                </li>
+    
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+                    </li>
+                {% endif %}
+            </ul>
+                
+        </nav>
+    </div>
+    {% comment %}End Pagination{% endcomment %}
+
+{% endblock content %}
+
+     
