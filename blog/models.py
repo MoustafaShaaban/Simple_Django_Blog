@@ -10,7 +10,6 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, null=False)
     content = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
 
 
     class Meta:
