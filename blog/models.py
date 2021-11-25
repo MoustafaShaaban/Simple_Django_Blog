@@ -14,7 +14,7 @@ class Post(models.Model):
 
     class Meta:
         """ Show new posts first  """
-        ordering = ['-updated_on']
+        ordering = ['-posted_on']
 
 
     def __str__(self):
