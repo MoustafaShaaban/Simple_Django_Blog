@@ -14,6 +14,4 @@ To get started with the project:
 `python manage.py migrate blog`
 `python manage.py createsuperuser`
 
-5- Create a superuser: python manage.py createsuperuser
-
-6- Run the project: python manage.py runserver
+5- Run the project: python manage.py runserver
