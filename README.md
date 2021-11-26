@@ -8,19 +8,7 @@ To get started with the project:
 
 3- Install requirements.txt: pipenv install -r requirements.txt
 
-4- Create the database by running the following commands:
-`
-python manage.py migrate
-`
-`
-python manage.py makemigrations blog
-`
-
-`
-python manage.py migrate blog
-`
-
-
+4- Create the database: python manage.py migrate
 
 5- Create a superuser: python manage.py createsuperuser
 
