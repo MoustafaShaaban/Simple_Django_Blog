@@ -16,3 +16,7 @@ To get started with the project:
 `python manage.py createsuperuser`
 
 5- Run the project: python manage.py runserver
+
+6- Login using your super account at localhost:8000/admin/ to add a few posts.
+
+7- navigate to localhost:8000/ to see the final results
