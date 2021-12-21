@@ -1,3 +1,4 @@
+Template Source and Credits to Start Bootstrap website: https://startbootstrap.com/theme/clean-blog
 A project built with Django web framework and Bootstrap
 
 To get started with the project:
