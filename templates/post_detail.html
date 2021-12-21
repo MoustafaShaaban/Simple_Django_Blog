@@ -3,19 +3,39 @@
 {% block title %}{{ post.title|safe }}{% endblock title %}
 
 
-{% block content %}
-    <div class="container mt-4">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h2 class="card-title text-center"><a href="{% url 'post-detail' post.slug %}"></a>{{ post.title|safe }}</h2>
-                <p class="card-text text-center">
-                    <small class="text-muted">
-                        By: {{ post.author|safe }} <span>In {{ post.posted_on }}</span>
-                    </small>
-                </p>
-                <p class="card-text">{{ post.content|safe }}</p>
-                <a href="{% url 'post-list' %}">Go Back</a>
-            </div>
+{% block header %}
+<header class="masthead" style="background-image: url('static/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+            <h1>{{ post.title }}</h1>
+            <span class="meta">Posted by
+            <a href="#">{{ post.author }}</a>
+            on {{ post.posted_on }}</span>
+        </div>
         </div>
     </div>
+    </div>
+</header>
+{% endblock header %}
+    
+
+{% block content %}
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <h2 class="text-center"><a href="{% url 'post-detail' post.slug %}"></a>{{ post.title|safe }}</h2>
+                    <p class="post-meta">Posted by
+                        <a href="#">{{ post.author|safe }}</a>
+                        on {{ post.posted_on }}
+                    </p>
+                    <p class="card-text">{{ post.content|safe }}</p>
+                    <a href="{% url 'post-list' %}">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </article>
 {% endblock content %}
