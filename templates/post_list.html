@@ -23,7 +23,7 @@
         <div class="post-preview">
             <a href="{% url 'post-detail' post.slug %}">
                 <h2 class="post-title">{{ post.title }}</h2>
-                <h3 class="post-subtitle">{{ post.content|slice:':200'|safe }}</h3>
+                <h3 class="post-subtitle">{{ post.content|slice:':50'|safe }}</h3>
             </a>
             <p class="post-meta">Posted by
                 <a href="#">{{ post.author|safe }}</a>

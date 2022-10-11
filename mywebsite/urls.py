@@ -3,9 +3,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from users import views as users_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path("users/", include("django.contrib.auth.urls")),
+    path('users/signup/', users_views.RegisterView.as_view(), name='register'),
 ]
 
 

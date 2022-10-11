@@ -23,7 +23,8 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                
+                <ul class="nav justify-content-center">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'post-list' %}">Home</a>
                     </li>
@@ -33,6 +34,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                     </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Profile</a>
+                        </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'register' %}" class="nav-link text-white">Register</a>
+                            </li>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link text-white mx-2">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="nav-link text-white mx-2">Login</a>
+                            </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -123,14 +146,3 @@
     <script src="{% static 'js/clean-blog.min.js' %}"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
