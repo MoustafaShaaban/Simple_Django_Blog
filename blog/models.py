@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from django.template.defaultfilters import slugify
 
 
 class Post(models.Model):
@@ -23,3 +23,8 @@ class Post(models.Model):
     def get_absolute_url(self):
         """ A method to tell Django how to calculate the canonical URL (official url of a page) for an object """
         return reverse('post-detail', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)

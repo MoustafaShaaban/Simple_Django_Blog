@@ -28,6 +28,23 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <h2 class="text-center"><a href="{% url 'post-detail' post.slug %}"></a>{{ post.title|safe }}</h2>
+                    <hr>
+                    
+                    {% if user.is_authenticated %}
+                    <div class="form-inline my-2 my-lg-0">
+                        <button class="btn btn-info mx-2">
+                            <a href="{% url 'update-post' post.pk %}" class="text-white">Update</a>
+                        </button>
+                        <button class="btn btn-danger">
+                            <a href="{% url 'delete-post' post.pk %}" class="text-white">Delete</a>
+                        </button>
+                    </div>
+
+                    {% else %}
+                    <p>You are not logged in, Please click <a href="{% url 'login' %}" class="text-white">here</a> to login and add a todo!</p>
+                    {% endif %}
+                        
+                    <hr>
                     <p class="post-meta">Posted by
                         <a href="#">{{ post.author|safe }}</a>
                         on {{ post.posted_on }}

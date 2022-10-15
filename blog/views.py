@@ -1,6 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 from .models import Post
 
@@ -31,10 +32,24 @@ class CreatePost(CreateView, LoginRequiredMixin):
     model = Post
     fields = ['title', 'content']
     template_name = 'posts/create_post.html'
+    success_url = reverse_lazy('post-list')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class UpdatePost(UpdateView, LoginRequiredMixin):
+    model = Post
+    fields = ['title', 'content']
+    template_name = 'posts/update_post.html'
+    success_url = reverse_lazy('post-list')
+
+
+class DeletePost(LoginRequiredMixin, DeleteView):
+	model = Post
+	template_name = 'posts/delete_post.html'
+	success_url = reverse_lazy('post-list')
 
 
 class AboutView(TemplateView):
